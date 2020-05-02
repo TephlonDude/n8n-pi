@@ -1,0 +1,73 @@
+#!/bin/sh
+
+# Colours
+red="\033[00;31m"
+RED="\033[01;31m"
+
+green="\033[00;32m"
+GREEN="\033[01;32m"
+
+brown="\033[00;33m"
+YELLOW="\033[01;33m"
+
+blue="\033[00;34m"
+BLUE="\033[01;34m"
+
+purple="\033[00;35m"
+PURPLE="\033[01;35m"
+
+cyan="\033[00;36m"
+CYAN="\033[01;36m"
+
+white="\033[00;37m"
+WHITE="\033[01;37m"
+
+dim="\e[2m"
+undim="\e[0m"
+NC="\033[00m"
+
+# Info
+CPUMOD=$(cat /proc/cpuinfo | grep -m 1 -w 'model name' | awk -F: '{print $2}')
+HOSTNAME=$(uname -n)
+KERNEL=$(uname -r)
+MEMTOTAL=$(cat /proc/meminfo | grep -m 1 -w 'MemTotal' | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//')
+MEMFREE=$(cat /proc/meminfo | grep -m 1 -w 'MemFree' | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//')
+SWAPTOTAL=$(cat /proc/meminfo | grep -m 1 -w 'SwapTotal' | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//')
+SWAPFREE=$(cat /proc/meminfo | grep -m 1 -w 'SwapFree' | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//')
+IPADDR=$( ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
+DISKSPACE=$(df -H -x zfs -x squashfs -x tmpfs -x devtmpfs -x overlay --output=target,pcent,size | tail -n+2)
+NPMVER=$(npm -v)
+NODEJSVER=$(node -v)
+N8NVER=$(jq  -r .version  /usr/lib/node_modules/n8n/package.json)
+
+echo -n "${WHITE}"
+/usr/bin/env figlet "${HOSTNAME}"
+
+echo -n "${red}"
+echo "Welcome to the n8n Raspberry Pi Server!"
+echo
+echo "${red}===${WHITE}Memory${red}==="
+echo -n "${CYAN}Memory Total...: ${white}${MEMTOTAL}  "
+echo "${CYAN}Memory Free....: ${white}${MEMFREE}"
+echo -n "${CYAN}Swap Total.....: ${white}${SWAPTOTAL}  "
+echo "${CYAN}Swap Free......: ${white}${SWAPFREE}"
+echo
+echo "${red}===${WHITE}Disk Usage${red}==="
+echo "${CYAN}Partition  Used  Size"
+echo "====================="
+echo "${white}${DISKSPACE}"
+echo
+echo "${red}===${WHITE}Network${red}==="
+echo "${CYAN}IP Address.....: ${white}${IPADDR}"
+echo
+echo "${red}===${WHITE}NodeJS Info${red}==="
+echo -n "${CYAN}NPM Version....: ${white}${NPMVER}  "
+echo "${CYAN}NodeJS Version......: ${white}${NODEJSVER}"
+echo
+echo "${red}===${WHITE}n8n Info${red}==="
+echo -n "${CYAN}n8n Version........: ${white}${N8NVER)"
+echo "${CYAN}Website........: ${white}https://n8n.io"
+echo "${CYAN}Documentation..: ${white}https://docs.n8n.io"
+echo "${CYAN}Forum..........: ${white}https://community.n8n.io"
+echo "${CYAN}Github.........: ${white}https://github.com/n8n-io/n8n"
+echo -n "${NC}"
