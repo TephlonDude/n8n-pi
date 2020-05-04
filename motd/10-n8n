@@ -30,6 +30,7 @@ NC="\033[00m"
 CPUMOD=$(cat /proc/cpuinfo | grep -m 1 -w 'model name' | awk -F: '{print $2}')
 HOSTNAME=$(uname -n)
 KERNEL=$(uname -r)
+LINUXVER=$(awk -F "=" '/PRETTY_NAME/ {print $2}' /etc/os-release| sed 's/"//g')
 MEMTOTAL=$(cat /proc/meminfo | grep -m 1 -w 'MemTotal' | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//')
 MEMFREE=$(cat /proc/meminfo | grep -m 1 -w 'MemFree' | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//')
 SWAPTOTAL=$(cat /proc/meminfo | grep -m 1 -w 'SwapTotal' | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//')
@@ -38,13 +39,16 @@ IPADDR=$( ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0
 DISKSPACE=$(df -H -x zfs -x squashfs -x tmpfs -x devtmpfs -x overlay --output=target,pcent,size | tail -n+2)
 NPMVER=$(npm -v)
 NODEJSVER=$(node -v)
-N8NVER=$(jq  -r .version  /usr/lib/node_modules/n8n/package.json)
+N8NVER=$(jq -r .version /usr/lib/node_modules/n8n/package.json)
 
 echo -n "${WHITE}"
 /usr/bin/env figlet "${HOSTNAME}"
 
 echo -n "${red}"
 echo "Welcome to the n8n Raspberry Pi Server!"
+echo
+echo "${red}===${WHITE}System Info${red}==="
+echo "${CYAN}System Version...: ${white}${LINUXVER}"
 echo
 echo "${red}===${WHITE}Memory${red}==="
 echo -n "${CYAN}Memory Total...: ${white}${MEMTOTAL}  "
