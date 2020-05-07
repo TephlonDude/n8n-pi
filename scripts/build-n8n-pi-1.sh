@@ -78,7 +78,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     $SUDO cp /home/n8n/.bashrc /home/n8n/.bashrc-org || error_exit "Unable to copy /home/n8n/.bashrc to /home/n8n/.bashrc-org"
     echo '~/build-n8n-pi-2.sh' | sudo tee --append /home/n8n/.bashrc >/dev/null || error_exit "Unable to update /home/n8n/.bashrc to autorun build-n8n-pi-2.sh on next n8n user login"
 
-    # Final message nad instructions
+    # Final message and instructions
     message=$'The first phase of the installation has finished. We must now reboot the system in order for some changes to take effect and so you can log in as the new n8n user to continue the installation.\n\nWhen the system comes back online, please log in with the following credentials:\n    • Username: n8n\n    • Password: n8n=gr8!\n\nPro Tip: Write down that username and password so you have it handy.'
     whiptail --backtitle "n8n-pi Installer" --title "Time to Reboot" --msgbox "$message"  17 78
     $SUDO reboot || error_exit "Unable to reboot"
