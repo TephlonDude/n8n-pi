@@ -38,10 +38,10 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     whiptail --backtitle "n8n-pi Installer" --gauge "$message" 13 34 13
     $SUDO apt upgrade -y || error_exit "Unable to upgrade packages"
 
-    # Installs figlet and jq needed for MOTD
+    # Installs figlet and jq needed for MOTD, build essentials for NodeJS
     message=$'  Update repositiories\n  Upgrade application packages\n\U2192 Install dependencies\n  Configure SSH\n  Add n8n user\n  Install base custom MOTD\n  Update hostname\n  Prepare for reboot'
     whiptail --backtitle "n8n-pi Installer" --gauge "$message" 13 34 25
-    $SUDO apt install figlet jq -y || error_exit "Unable to install dependencies"
+    $SUDO apt install figlet jq build-essential -y || error_exit "Unable to install dependencies"
 
     # Enables SSH
     message=$'  Update repositiories\n  Upgrade application packages\n  Install dependencies\n\U2192 Configure SSH\n  Add n8n user\n  Install base custom MOTD\n  Update hostname\n  Prepare for reboot'
