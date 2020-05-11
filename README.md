@@ -15,13 +15,9 @@ This project would not be possible if it was not for the help of the following:
     * [Documentation](https://www.raspberrypi.org/documentation/)
     * [Raspian](https://www.raspberrypi.org/downloads/raspbian/)
 * [GitHub](https://github.com/)
+* [Docsify](https://docsify.js.org/)
 
 # Installation
 There are two different ways to get the n8n-pi up and running:
 1. **Image Build** - You essentially download a pre-built image, write it to a microSD card, and boot from your RPi. You don't really learn a whole lot from the process but you are up and running quickly.
 2. **DIY Build** - You run a pre-configured set of scripts that will do most of the heavy lifting for you but you can open up and edit the scripts to learn what they do and modify them to fit your needs.
-
-## Option 1 - Image Build (Easy Install, Minimal Learning)
-
-
-## Option 2 - DIY Build (Challenging Install, More Learning)
