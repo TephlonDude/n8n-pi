@@ -1,3 +1,5 @@
+<img align="right" width="300" height="300" src="https://robohash.org/n8n-pi">
+
 # n8n-pi
  Tools and Images to Build a Raspberry Pi n8n server
 
