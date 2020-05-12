@@ -13,6 +13,7 @@ Write the image file to the microSD card using a program such as [Raspberry Pi I
 ### **Resources**
 * [Installing Operating System Images](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
 * [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
+
 ## Can't SSH to RPi in order to Start Installation
 
 # Permissions
