@@ -1,4 +1,5 @@
 # Raspberry Pi
+Trouble getting the Raspberry Pi to work as expected.
 ## Raspberry Pi does not boot after copying image file to microSD card
 ### **Challenge**
 After the image file is copied to the microSD card and the card is put into the Raspberry Pi, the Raspberry Pi will not boot when turned on.
