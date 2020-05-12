@@ -1,10 +1,5 @@
-<!-- docs/_sidebar.md -->
-
-* Home
+* [Home](/)
     * [Introducing n8n-pi](/)
-* Roadmap
-    * [Task List](Tasks.md)
-* Installation
-    * [Option 1 - Easy](InstallEasy.md)
-    * [Option 2 - DIY](InstallDIY.md)
+* [Roadmap](Roadmap.md)
+* [Installation](Install.md)
 * [Troubleshooting](Troubleshooting.md)
