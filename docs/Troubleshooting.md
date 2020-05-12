@@ -1,3 +1,6 @@
+# Troubleshooting
+Sometimes things don't go as planned. If that happens to you, take a look at some of the issues that we ran into during this project. Maybe we've already solved your challenge and you are good to go!
+
 # Raspberry Pi
 Trouble getting the Raspberry Pi to work as expected.
 ## Raspberry Pi does not boot after copying image file to microSD card

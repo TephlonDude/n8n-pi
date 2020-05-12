@@ -1,5 +1,4 @@
 * [Home](/)
-    * [Introducing n8n-pi](/)
 * [Roadmap](Roadmap.md)
 * [Installation](Install.md)
 * [Troubleshooting](Troubleshooting.md)
