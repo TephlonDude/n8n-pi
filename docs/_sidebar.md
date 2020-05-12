@@ -1,4 +1,5 @@
 * [Home](README.md)
 * [Roadmap](Roadmap.md)
 * [Installation](Install.md)
+* [Usage](Usage.md)
 * [Troubleshooting](Troubleshooting.md)
