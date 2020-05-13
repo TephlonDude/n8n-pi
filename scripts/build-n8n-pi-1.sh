@@ -59,6 +59,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     $SUDO truncate -s 0 /etc/motd || error_exit "$LINENO: Unable to delete the contents of /etc/motd"
     $SUDO rm -f /etc/profile.d/sshpwd.sh || error_exit "$LINENO: Unable to remove /etc/profile.d/sshpwd.sh"
     $SUDO rm -f /etc/profile.d/wifi-check.sh || error_exit "$LINENO: Unable to remove /etc/profile.d/wifi-check.sh"
+    $SUDO sed -i 's/#PrintLastLog yes/PrintLastLog no/g' /etc/ssh/sshd_config || error_exit "$LINENO: Unable to disable showing last time user logged in by editing /etc/ssh/sshd_config"
 
     # Reset hostname
     newhostname=$(whiptail --backtitle "n8n-pi Installer" --inputbox "Please provide a new hostname:" 8 34 n8n-pi --title "New Hostname" 3>&1 1>&2 2>&3)
