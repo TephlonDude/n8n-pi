@@ -7,7 +7,7 @@ error_exit()
 {
 	echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
     echo "You can rerun this script by using the command:"
-    echo $(dirname $0)/$(basename $0)
+    echo "wget -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash"
 	exit 1
 }
 
