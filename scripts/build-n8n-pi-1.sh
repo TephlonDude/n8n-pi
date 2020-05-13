@@ -71,6 +71,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     $SUDO chmod 755 /home/n8n/build-n8n-pi-2.sh || error_exit "$LINENO: Unable to set build-n8n-pi-2.sh permissions"
     $SUDO chown n8n:n8n /home/n8n/build-n8n-pi-2.sh || error_exit "$LINENO: Unable to set ownership for build-n8n-pi-2.sh to n8n user"
     $SUDO cp /home/n8n/.bashrc /home/n8n/.bashrc-org || error_exit "$LINENO: Unable to copy /home/n8n/.bashrc to /home/n8n/.bashrc-org"
+    $SUDO chown n8n:n8n /home/n8n/.bashrc-org || error_exit "$LINENO: Unable to set ownership for /home/n8n/.bashrc-org"
     echo '~/build-n8n-pi-2.sh' | sudo tee --append /home/n8n/.bashrc >/dev/null || error_exit "$LINENO: Unable to update /home/n8n/.bashrc to autorun build-n8n-pi-2.sh on next n8n user login"
 
     # Final message and instructions
