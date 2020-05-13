@@ -57,6 +57,8 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     $SUDO chmod 755 /etc/update-motd.d/10-sysinfo || error_exit "$LINENO: Unable to set 10-sysinfo permissions"
     $SUDO rm -f /etc/update-motd.d/10-uname || error_exit "$LINENO: Unable to remove /etc/update-motd.d/10-uname"
     $SUDO truncate -s 0 /etc/motd || error_exit "$LINENO: Unable to delete the contents of /etc/motd"
+    $SUDO rm -f /etc/profile.d/sshpwd.sh || error_exit "$LINENO: Unable to remove /etc/profile.d/sshpwd.sh"
+    $SUDO rm -f /etc/profile.d/wifi-check.sh || error_exit "$LINENO: Unable to remove /etc/profile.d/wifi-check.sh"
 
     # Reset hostname
     newhostname=$(whiptail --backtitle "n8n-pi Installer" --inputbox "Please provide a new hostname:" 8 34 n8n-pi --title "New Hostname" 3>&1 1>&2 2>&3)
