@@ -50,10 +50,10 @@ To do
 To do
 ## SSH to RPi
 To do
-## Run *[build-n8n-pi-1.sh](https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh)*
+## Start the installation
 Form the command prompt, enter the following:
 ```bash
 wget -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash
 ```
-This will download and run the first installation script.
+This will download and run the first installation script. Simply follow the instructions from there.
 

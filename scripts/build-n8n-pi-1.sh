@@ -35,8 +35,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     echo "done!"
 
     # Upgrades packages
-    echo -n "Upgrading packages..."
-    whiptail --backtitle "n8n-pi Installer" --gauge "$message" 13 34 13
+    echo -n "Upgrading packages (Please be patient, this may take a while)..."
     $SUDO apt upgrade -y >/dev/null 2>&1 || error_exit "$LINENO: Unable to upgrade packages"
     echo "done!"
 
