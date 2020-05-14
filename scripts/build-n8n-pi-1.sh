@@ -1,10 +1,9 @@
 #!/bin/bash
-PROGNAME=$(basename $0)
 
 # Deals with errors
 error_exit()
 {
-	echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+	echo "${1:-"Unknown Error"}" 1>&2
     echo "You can rerun this script by using the command:"
     echo "wget -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash"
 	exit 1
