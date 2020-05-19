@@ -8,9 +8,6 @@ error_exit()
     echo "Last 10 entried by this script:"
     tail $logfile
     echo "Full log details are recorded in $logfile"
-    echo
-    echo "You can rerun this script by using the command:"
-    echo "wget --no-cache -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash"
 	exit 1
 }
 
