@@ -103,7 +103,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     # Final message and instructions
     message=$'The first phase of the installation has finished. We must now reboot the system in order for some changes to take effect and so you can log in as the new n8n user to continue the installation.\n\nWhen the system comes back online, please log in with the following credentials:\n    • Username: n8n\n    • Password: n8n=gr8!\n\nPro Tip: Write down that username and password so you have it handy.'
     whiptail --backtitle "n8n-pi Installer" --title "Time to Reboot" --msgbox "$message"  17 78
-    $SUDO reboot || error_exit "$LINENO: Unable to reboot"
+    $SUDO reboot &>>$logfile || error_exit "$LINENO: Unable to reboot"
 
 else 
     error_exit "$LINENO: Installation cancelled"
