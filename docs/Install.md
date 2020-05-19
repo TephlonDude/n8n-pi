@@ -53,7 +53,7 @@ To do
 ## Start the installation
 Form the command prompt, enter the following:
 ```bash
-wget -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash
+wget --no-cache -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash
 ```
 This will download and run the first installation script. Simply follow the instructions from there.
 
