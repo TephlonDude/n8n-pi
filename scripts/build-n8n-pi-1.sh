@@ -39,9 +39,9 @@ fi
 clear
 
 # Checking for internet access
-log_heading "Checking for internet access..."
-ping -c 5 raw.githubusercontent.com &>>$logfile || error_exit "$LINENO: Unable to access the internet. Script exiting"
-echo "done!"
+# log_heading "Checking for internet access..."
+# ping -c 5 raw.githubusercontent.com &>>$logfile || error_exit "$LINENO: Unable to access the internet. Script exiting"
+# echo "done!"
 
 # Introduction message
 message=$'This script is designed to build a new n8n-pi from a base Raspbian Lite installation.\n\nThis is the first of two scripts that need to be run.\n\nIt will perform the following actions:\n    1. Update Raspian Lite to the latest software\n    2. Install dependencies\n    3. Rename the server\n    4. Adds the n8n user\n    5. Install base custom MOTD\n    6. Update hostname\n    7. Reboot'

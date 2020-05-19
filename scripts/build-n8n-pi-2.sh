@@ -41,9 +41,9 @@ elevate()
 clear
 
 # Checking for internet access
-log_heading "Checking for internet access..."
-ping -c 5 raw.githubusercontent.com &>>$logfile || error_exit "$LINENO: Unable to access the internet. Script exiting"
-echo "done!"
+# log_heading "Checking for internet access..."
+# ping -c 5 raw.githubusercontent.com &>>$logfile || error_exit "$LINENO: Unable to access the internet. Script exiting"
+# echo "done!"
 
 message='This script is designed to build a new n8n-pi from a base Raspbian Lite installation.\n\nThis is the second of two scripts that need to be run.\n\nIt will perform the following actions:\n    1. Clean up from previous script\n    2. Delete the pi user\n    3. Install NodeJS\n    4. Install n8n\n    5. Install & Configure PM2\n    6. Update MOTD\n    7. Reboot'
 whiptail --backtitle "n8n-pi Installer" --title "n8n-pi Installer Part 2" --msgbox "$message"  18 78
