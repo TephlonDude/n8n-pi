@@ -10,7 +10,7 @@ error_exit()
     echo "Full log details are recorded in $logfile"
     echo
     echo "You can rerun this script by using the command:"
-    echo "wget -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash"
+    echo "wget --no-cache -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash"
 	exit 1
 }
 
@@ -104,7 +104,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
 
     # Install Updated MOTD
     log_heading "Install Updated MOTD"
-    elevate "wget -O /etc/update-motd.d/11-n8n https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/motd/11-n8n" || error_exit "$LINENO: Unable to retrieve 11-n8n file"
+    elevate "wget --no-cache -O /etc/update-motd.d/11-n8n https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/motd/11-n8n" || error_exit "$LINENO: Unable to retrieve 11-n8n file"
     elevate "chmod 755 /etc/update-motd.d/11-n8n" || error_exit "$LINENO: Unable to set 11-n8n permissions"
 
     # Reboot
