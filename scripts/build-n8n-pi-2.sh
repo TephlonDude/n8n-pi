@@ -66,12 +66,12 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     rm -f ~/.bashrc-temp &>>$logfile || error_exit "$LINENO: Unable to delete temp .bashrc file"
 
     # Delete the pi user and remove the home folder
-    message=$'  Previous script cleanup\n\U2192 Delete pi user\n  Install NodeJS\n  Install n8n\n  Install & Configure PM2\n  Update MOTD\n  Reboot'
-    whiptail --backtitle "n8n-pi Installer" --gauge "$message" 11 34 17
+    log_heading "Delete the pi user and remove the home folder"
     elevate "killall -u pi" || error_exit "$LINENO: Unable to stop all processes owned by the pi user"
     elevate "deluser --remove-home -f pi" || error_exit "$LINENO: Unable to delete the pi user and/or remove the home directory"
 
     # Install NodeJS
+    log_heading "Install NodeJS"
     NODEVER=$(whiptail --backtitle "n8n-pi Installer" --title "Select NodeJS Version" --radiolist \
         "Select the version of NodeJS you would like to install:" 20 78 4 \
         "10.x" "Node.js v10.x" OFF \
@@ -79,15 +79,11 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
         "13.x" "Node.js v13.x" OFF \
         "14.x" "Node.js v14.x" OFF \
         3>&1 1>&2 2>&3)
-    # DEBURL="https://deb.nodesource.com/setup_${NODEVER}"
-    message=$'  Previous script cleanup\n  Delete pi user\n\U2192  Install NodeJS\n  Install n8n\n  Install & Configure PM2\n  Update MOTD\n  Reboot'
-    whiptail --backtitle "n8n-pi Installer" --gauge "$message" 11 34 33
     curl -sL https://deb.nodesource.com/setup_${NODEVER} | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
     elevate "apt install -y nodejs" || error_exit "$LINENO: Unable to install NodeJS"
 
     # Install n8n
-    message=$'  Previous script cleanup\n  Delete pi user\n   Install NodeJS\n\U2192 Install n8n\n  Install & Configure PM2\n  Update MOTD\n  Reboot'
-    whiptail --backtitle "n8n-pi Installer" --gauge "$message" 11 34 50
+    log_heading "Install n8n"
     cd ~ &>>$logfile || error_exit "$LINENO: Unable to change working directory to home directory"
     # elevate "chown -R n8n:n8n /usr/lib/node_modules || error_exit "$LINENO: Unable to change ownership of the /usr/lib/node_modules folder to user n8n"
     mkdir ~/.nodejs_global &>>$logfile || error_exit "$LINENO: Unable to create ~/.nodejs_global"
@@ -97,8 +93,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     npm install n8n -g &>>$logfile || error_exit "$LINENO: Unable to install n8n"
 
     # Install & Configure PM2
-    message=$'  Previous script cleanup\n  Delete pi user\n   Install NodeJS\n  Install n8n\n\U2192 Install & Configure PM2\n  Update MOTD\n  Reboot'
-    whiptail --backtitle "n8n-pi Installer" --gauge "$message" 11 34 67
+    log_heading "Install & Configure PM2"
     cd ~ &>>$logfile || error_exit "$LINENO: Unable to move the the home directory"
     npm install pm2@latest -g &>>$logfile || error_exit "$LINENO: Unable to install PM2"
     if (whiptail  --backtitle "n8n-pi Installer" --title "Tunnel?" --yesno "Do you wish to start n8n with the tunnel option?" 8 40); then
@@ -108,8 +103,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     fi
 
     # Install Updated MOTD
-    message=$'  Previous script cleanup\n  Delete pi user\n   Install NodeJS\n  Install n8n\n  Install & Configure PM2\n\U2192  Update MOTD\n  Reboot'
-    whiptail --backtitle "n8n-pi Installer" --gauge "$message" 11 34 83
+    log_heading "Install Updated MOTD"
     elevate "wget -O /etc/update-motd.d/11-n8n https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/motd/11-n8n" || error_exit "$LINENO: Unable to retrieve 11-n8n file"
     elevate "chmod 755 /etc/update-motd.d/11-n8n" || error_exit "$LINENO: Unable to set 11-n8n permissions"
 
