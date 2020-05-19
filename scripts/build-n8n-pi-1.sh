@@ -87,7 +87,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     log_heading "Setting new hostname..."
     newhostname=$(whiptail --backtitle "n8n-pi Installer" --inputbox "Please provide a new hostname:" 8 34 n8n-pi --title "New Hostname" 3>&1 1>&2 2>&3)
     echo $newhostname | $SUDO tee /etc/hostname  &>>$logfile || error_exit "$LINENO: Unable to set new hostname in /etc/hostname"
-    $SUDO sed -i 's/raspberrypi/$newhostname/g' /etc/hosts &>>$logfile || error_exit "$LINENO: Unable to set new hostname in /etc/hosts"
+    $SUDO sed -i "s/raspberrypi/$newhostname/g" /etc/hosts &>>$logfile || error_exit "$LINENO: Unable to set new hostname in /etc/hosts"
     echo "done!"
 
     # Prepare for reboot
