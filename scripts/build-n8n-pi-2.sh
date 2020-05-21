@@ -39,15 +39,17 @@ whiptail --backtitle "n8n-pi Installer" --title "n8n-pi Installer Part 2" --msgb
 if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --yesno "Do you wish to continue with the installation?" 8 78); then
 
     # Clean up the temporary changes to .bashrc that allowed this script to autorun
-    log_heading "Clean up the temporary changes to .bashrc that allowed this script to autorun..."
+    log_heading "Clean up autorun entries"
     mv ~/.bashrc ~/.bashrc-temp &>>$logfile || error_exit "$LINENO: Unable to rename temp .bashrc file"
     mv ~/.bashrc-org ~/.bashrc &>>$logfile || error_exit "$LINENO: Unable to rename original .bashrc file"
     rm -f ~/.bashrc-temp &>>$logfile || error_exit "$LINENO: Unable to delete temp .bashrc file"
+    echo "done!"
 
     # Delete the pi user and remove the home folder
     log_heading "Delete the pi user and remove the home folder"
-    $SUDO killall -u pi &>>$logfile || error_exit "$LINENO: Unable to stop all processes owned by the pi user"
+    $SUDO killall -q -u pi &>>$logfile
     $SUDO deluser --remove-home -f pi &>>$logfile || error_exit "$LINENO: Unable to delete the pi user and/or remove the home directory"
+    echo "done!"
 
     # Install NodeJS
     log_heading "Install NodeJS"
@@ -60,6 +62,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
         3>&1 1>&2 2>&3)
     curl -sL https://deb.nodesource.com/setup_${NODEVER} | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
     $SUDO apt install -y nodejs &>>$logfile || error_exit "$LINENO: Unable to install NodeJS"
+    echo "done!"
 
     # Install n8n
     log_heading "Install n8n"
@@ -70,6 +73,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     echo 'export PATH=~/.nodejs_global/bin:$PATH' | tee --append ~/.profile &>>$logfile || error_exit "$LINENO: Unable to update ~/.profile to update PATH variable"
     source ~/.profile &>>$logfile || error_exit "$LINENO: Unable to reload ~/.profile "
     npm install n8n -g &>>$logfile || error_exit "$LINENO: Unable to install n8n"
+    echo "done!"
 
     # Install & Configure PM2
     log_heading "Install & Configure PM2"
@@ -80,16 +84,19 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     else
         pm2 start n8n &>>$logfile || error_exit "$LINENO: Unable to start n8n using PM2"
     fi
+    echo "done!"
 
     # Install Updated MOTD
     log_heading "Install Updated MOTD"
     $SUDO wget --no-cache -O /etc/update-motd.d/11-n8n https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/motd/11-n8n &>>$logfile || error_exit "$LINENO: Unable to retrieve 11-n8n file"
     $SUDO chmod 755 /etc/update-motd.d/11-n8n &>>$logfile || error_exit "$LINENO: Unable to set 11-n8n permissions"
+    echo "done!"
 
     # Clean up /etc/sudoers file
     log_heading "Clean up /etc/sudoers file"
     $SUDO rm /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to delete temp /etc/sudoers file"
     $SUDO mv /etc/sudoers.org /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to rename /etc/sudoers.org to /etc/sudoers"
+    echo "done!"
 
     # Reboot
     IPADDR=$( ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
@@ -97,6 +104,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     whiptail --backtitle "n8n-pi Installer" --title "Time to Reboot" --msgbox "$message"  17 78
     log_heading "Reboot"
     $SUDO reboot &>>$logfile || error_exit "$LINENO: Unable to reboot"
+    echo "done!"
 
 else 
     error_exit "$LINENO: Installation cancelled"
