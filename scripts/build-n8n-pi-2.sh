@@ -15,46 +15,28 @@ error_exit()
 log_heading()
 {
     length=${#1}
-    length=`expr length + 8`
+    length=`expr $length + 8`
     printf '%*s' $length | tr ' ' '*'>>$logfile
     echo>>$logfile
     echo "*** $1 ***">>$logfile
     printf '%*s' $length | tr ' ' '*'>>$logfile
     echo>>$logfile
-    echo -n $1
+    echo -n $1...
 
 }
 
-elevate()
-{
-    if [[ $EUID -ne 0 ]]; then
-        echo $sudo_pwd | sudo -S $1 &>>$logfile
-    else
-        echo $1 &>>$logfile
-    fi
-    return $?
-}
+# Runs commands with "sudo" if the user running the script is not root
+SUDO=''
+if [[ $EUID -ne 0 ]]; then
+    SUDO='sudo'
+fi
 
 clear
 
-# Checking for internet access
-# log_heading "Checking for internet access..."
-# ping -c 5 raw.githubusercontent.com &>>$logfile || error_exit "$LINENO: Unable to access the internet. Script exiting"
-# echo "done!"
-
-message='This script is designed to build a new n8n-pi from a base Raspbian Lite installation.\n\nThis is the second of two scripts that need to be run.\n\nIt will perform the following actions:\n    1. Clean up from previous script\n    2. Delete the pi user\n    3. Install NodeJS\n    4. Install n8n\n    5. Install & Configure PM2\n    6. Update MOTD\n    7. Reboot'
+message='This script is designed to build a new n8n-pi from a base Raspbian Lite installation.\n\nThis is the second of two scripts that need to be run.\n\nIt will perform the following actions:\n    1. Clean up from previous script\n    2. Delete the pi user\n    3. Install NodeJS\n    4. Install n8n\n    5. Install & Configure PM2\n    6. Update MOTD\n    7. /etc/sudoers Cleanup\n    8. Reboot'
 whiptail --backtitle "n8n-pi Installer" --title "n8n-pi Installer Part 2" --msgbox "$message"  18 78
 
 if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --yesno "Do you wish to continue with the installation?" 8 78); then
-
-    # Cache sudo password so that it can be used with other commends if necessary
-    # clear
-    # echo "Enter your sudo password so that we can use it when necessary during the installation. If you did not write it down, it should be n8n=gr8!"
-    # sudo echo -n || error_exit "$LINENO: Unable to successfully capture sudo password"
-
-    if [[ $EUID -ne 0 ]]; then
-        sudo_pwd=$(whiptail --backtitle "n8n-pi Installer" --passwordbox "Please provide the SUDO password:" 8 34 n8n=gr8! --title "SUDO Password" 3>&1 1>&2 2>&3)
-    fi
 
     # Clean up the temporary changes to .bashrc that allowed this script to autorun
     log_heading "Clean up the temporary changes to .bashrc that allowed this script to autorun..."
@@ -64,8 +46,8 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
 
     # Delete the pi user and remove the home folder
     log_heading "Delete the pi user and remove the home folder"
-    elevate "killall -u pi" || error_exit "$LINENO: Unable to stop all processes owned by the pi user"
-    elevate "deluser --remove-home -f pi" || error_exit "$LINENO: Unable to delete the pi user and/or remove the home directory"
+    $SUDO killall -u pi &>>$logfile || error_exit "$LINENO: Unable to stop all processes owned by the pi user"
+    $SUDO deluser --remove-home -f pi &>>$logfile || error_exit "$LINENO: Unable to delete the pi user and/or remove the home directory"
 
     # Install NodeJS
     log_heading "Install NodeJS"
@@ -77,12 +59,12 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
         "14.x" "Node.js v14.x" OFF \
         3>&1 1>&2 2>&3)
     curl -sL https://deb.nodesource.com/setup_${NODEVER} | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
-    elevate "apt install -y nodejs" || error_exit "$LINENO: Unable to install NodeJS"
+    $SUDO apt install -y nodejs &>>$logfile || error_exit "$LINENO: Unable to install NodeJS"
 
     # Install n8n
     log_heading "Install n8n"
     cd ~ &>>$logfile || error_exit "$LINENO: Unable to change working directory to home directory"
-    # elevate "chown -R n8n:n8n /usr/lib/node_modules || error_exit "$LINENO: Unable to change ownership of the /usr/lib/node_modules folder to user n8n"
+    # $SUDO chown -R n8n:n8n /usr/lib/node_modules || error_exit "$LINENO: Unable to change ownership of the /usr/lib/node_modules folder to user n8n"
     mkdir ~/.nodejs_global &>>$logfile || error_exit "$LINENO: Unable to create ~/.nodejs_global"
     npm config set prefix ~/.nodejs_global &>>$logfile || error_exit "$LINENO: Unable to set the npm prefix to ~/.nodejs_global"
     echo 'export PATH=~/.nodejs_global/bin:$PATH' | tee --append ~/.profile &>>$logfile || error_exit "$LINENO: Unable to update ~/.profile to update PATH variable"
@@ -101,14 +83,20 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
 
     # Install Updated MOTD
     log_heading "Install Updated MOTD"
-    elevate "wget --no-cache -O /etc/update-motd.d/11-n8n https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/motd/11-n8n" || error_exit "$LINENO: Unable to retrieve 11-n8n file"
-    elevate "chmod 755 /etc/update-motd.d/11-n8n" || error_exit "$LINENO: Unable to set 11-n8n permissions"
+    $SUDO wget --no-cache -O /etc/update-motd.d/11-n8n https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/motd/11-n8n &>>$logfile || error_exit "$LINENO: Unable to retrieve 11-n8n file"
+    $SUDO chmod 755 /etc/update-motd.d/11-n8n &>>$logfile || error_exit "$LINENO: Unable to set 11-n8n permissions"
+
+    # Clean up /etc/sudoers file
+    log_heading "Clean up /etc/sudoers file"
+    $SUDO rm /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to delete temp /etc/sudoers file"
+    $SUDO mv /etc/sudoers.org /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to rename /etc/sudoers.org to /etc/sudoers"
 
     # Reboot
     IPADDR=$( ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
     message=$'The final phase of the installation has finished. We must now reboot the system in order for some changes to take effect.\n\nWhen the system comes back online, you should be able to access the n8n WebUI from https://${IPADDR}:5678.'
     whiptail --backtitle "n8n-pi Installer" --title "Time to Reboot" --msgbox "$message"  17 78
-    elevate "reboot" || error_exit "$LINENO: Unable to reboot"
+    log_heading "Reboot"
+    $SUDO reboot &>>$logfile || error_exit "$LINENO: Unable to reboot"
 
 else 
     error_exit "$LINENO: Installation cancelled"
