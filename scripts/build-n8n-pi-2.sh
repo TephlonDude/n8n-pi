@@ -83,7 +83,8 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     else
         pm2 start n8n &>>$logfile || error_exit "$LINENO: Unable to start n8n using PM2"
     fi
-    pm2 startup &>>$logfile || error_exit "$LINENO: Unable to configure PM2 to autostart"
+    pm2 startup &>>$logfile
+    $SUDO env PATH=$PATH:/usr/bin /home/n8n/.nodejs_global/lib/node_modules/pm2/bin/pm2 startup systemd -u n8n --hp /home/n8n &>>$logfile || error_exit "$LINENO: Unable to create PM2 autostart"
     pm2 save &>>$logfile || error_exit "$LINENO: Unable to save PM2 configuration"
     echo "done!"
 
