@@ -101,3 +101,7 @@ For those of you who need a bit more detail, here are the instructions for you. 
     * **Password:** *n8n=gr8!*
     This is very important because if you do not use this username and password, the installation will not continue.
 4. The next part of the installation will automatically start up when you log in. Follow the onscreen instructions to complete the second part of the installation (Animated GIF to follow!)
+
+![Part 2 Installation Script](img/InstallPart2.gif)
+
+5. You should now be able to open up your web browser to the proper location and be off and running with n8n!
