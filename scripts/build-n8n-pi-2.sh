@@ -52,7 +52,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     echo "done!"
 
     # Install NodeJS
-    log_heading "Install NodeJS"
+    log_heading "Install NodeJS (Please be patient, this may take a while)"
     NODEVER=$(whiptail --backtitle "n8n-pi Installer" --title "Select NodeJS Version" --radiolist \
         "Select the version of NodeJS you would like to install:" 20 78 4 \
         "10.x" "Node.js v10.x" OFF \
@@ -65,7 +65,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     echo "done!"
 
     # Install n8n
-    log_heading "Install n8n"
+    log_heading "Install n8n (Please be patient, this may take a while)"
     cd ~ &>>$logfile || error_exit "$LINENO: Unable to change working directory to home directory"
     # $SUDO chown -R n8n:n8n /usr/lib/node_modules || error_exit "$LINENO: Unable to change ownership of the /usr/lib/node_modules folder to user n8n"
     mkdir ~/.nodejs_global &>>$logfile || error_exit "$LINENO: Unable to create ~/.nodejs_global"
@@ -84,6 +84,8 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     else
         pm2 start n8n &>>$logfile || error_exit "$LINENO: Unable to start n8n using PM2"
     fi
+    pm2 startup &>>$logfile || error_exit "$LINENO: Unable to configure PM2 to autostart"
+    pm2 save &>>$logfile || error_exit "$LINENO: Unable to save PM2 configuration"
     echo "done!"
 
     # Install Updated MOTD
@@ -92,16 +94,20 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     $SUDO chmod 755 /etc/update-motd.d/11-n8n &>>$logfile || error_exit "$LINENO: Unable to set 11-n8n permissions"
     echo "done!"
 
-    # Clean up /etc/sudoers file
-    log_heading "Clean up /etc/sudoers file"
-    # $SUDO rm /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to delete temp /etc/sudoers file"
+    # Change sudo security
+    log_heading "Change sudo security"
     $SUDO cp -f /etc/sudoers.org /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to replace /etc/sudoers with /etc/sudoers.org"
-    $SUDO rm -f /etc/sudoers.org &>>$logfile || error_exit "$LINENO: Unable to delete /etc/sudoers.org"
+    # $SUDO rm -f /etc/sudoers.org &>>$logfile || error_exit "$LINENO: Unable to delete /etc/sudoers.org"
+    echo "done!"
+
+    # Final Cleanup
+    log_heading "Final cleanup"
+    rm -f ~/build-n8n-pi-2.sh &>>$logfile || error_exit "$LINENO: Unable to delete ~/build-n8n-pi-2.sh"
     echo "done!"
 
     # Reboot
-    IPADDR=$( ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
-    message=$'The final phase of the installation has finished. We must now reboot the system in order for some changes to take effect.\n\nWhen the system comes back online, you should be able to access the n8n WebUI from https://${IPADDR}:5678.'
+    IPADDR=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
+    message="The final phase of the installation has finished. We must now reboot the system in order for some changes to take effect.\n\nWhen the system comes back online, you should be able to access the n8n WebUI from https://${IPADDR}:5678."
     whiptail --backtitle "n8n-pi Installer" --title "Time to Reboot" --msgbox "$message"  17 78
     log_heading "Reboot"
     $SUDO reboot &>>$logfile || error_exit "$LINENO: Unable to reboot"
