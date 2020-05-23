@@ -93,6 +93,7 @@ For those of you who need a bit more detail, here are the instructions for you. 
     wget --no-cache -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash
     ```
 2. Follow the onscreen instructions to complete the first part of the installation
+
 ![Part 1 Installation Script](img/InstallPart1.gif)
 3. Once the Raspberry Pi has rebooted, SSH back into the system using the **new username and password**:
     * **Username:** *n8n*
