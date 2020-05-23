@@ -94,8 +94,9 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
 
     # Clean up /etc/sudoers file
     log_heading "Clean up /etc/sudoers file"
-    $SUDO rm /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to delete temp /etc/sudoers file"
-    $SUDO mv /etc/sudoers.org /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to rename /etc/sudoers.org to /etc/sudoers"
+    # $SUDO rm /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to delete temp /etc/sudoers file"
+    $SUDO cp -f /etc/sudoers.org /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to replace /etc/sudoers with /etc/sudoers.org"
+    $SUDO rm -f /etc/sudoers.org &>>$logfile || error_exit "$LINENO: Unable to delete /etc/sudoers.org"
     echo "done!"
 
     # Reboot
