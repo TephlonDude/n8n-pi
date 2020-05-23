@@ -67,7 +67,6 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     # Install n8n
     log_heading "Install n8n (Please be patient, this may take a while)"
     cd ~ &>>$logfile || error_exit "$LINENO: Unable to change working directory to home directory"
-    # $SUDO chown -R n8n:n8n /usr/lib/node_modules || error_exit "$LINENO: Unable to change ownership of the /usr/lib/node_modules folder to user n8n"
     mkdir ~/.nodejs_global &>>$logfile || error_exit "$LINENO: Unable to create ~/.nodejs_global"
     npm config set prefix ~/.nodejs_global &>>$logfile || error_exit "$LINENO: Unable to set the npm prefix to ~/.nodejs_global"
     echo 'export PATH=~/.nodejs_global/bin:$PATH' | tee --append ~/.profile &>>$logfile || error_exit "$LINENO: Unable to update ~/.profile to update PATH variable"
@@ -97,7 +96,6 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     # Change sudo security
     log_heading "Change sudo security"
     $SUDO cp -f /etc/sudoers.org /etc/sudoers &>>$logfile || error_exit "$LINENO: Unable to replace /etc/sudoers with /etc/sudoers.org"
-    # $SUDO rm -f /etc/sudoers.org &>>$logfile || error_exit "$LINENO: Unable to delete /etc/sudoers.org"
     echo "done!"
 
     # Final Cleanup
