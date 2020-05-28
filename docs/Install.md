@@ -25,7 +25,7 @@ Essentially:
 1. Boot the RPi
 1. Point your browser to http://<RPi.IP.address>:5678
 
-## Download the Image and Prep the Image
+## Download and Prep the Image
 1. Download the zipped image [here](https://1drv.ms/u/s!AiPmfoHg_rLRjMJYC4StlCAiiVfqQw?e=rbYone). Please note that this may take some time as the file is about 650 MB.
 1. Once you have the full file, extract the image file (it will expand to about 2.5 GB).
 
