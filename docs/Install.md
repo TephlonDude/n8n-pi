@@ -25,17 +25,23 @@ Essentially:
 1. Boot the RPi
 1. Point your browser to http://<RPi.IP.address>:5678
 
-## Download the Image
-To do
+## Download the Image and Prep the Image
+1. Download the zipped image [here](https://1drv.ms/u/s!AiPmfoHg_rLRjMJYC4StlCAiiVfqQw?e=rbYone). Please note that this may take some time as the file is about 650 MB.
+1. Once you have the full file, extract the image file (it will expand to about 2.5 GB).
 
 ## Write the Image to microSD card
-To do
+1. Insert a microSD card into your system. Minimum card size is 4 GB.
+1. Using your imaging software of choice (e.g. [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)), write the image to the microSD card.
+1. Once it is done writing, remove the microSD card from your system.
 
 ## Boot the RPi
-To do
+1. Make sure your Raspberry Pi is powered off
+1. Place the newly minted n8n microSD card into your Raspberry Pi
+1. Power up your Raspberry Pi
 
-## Got to http://<RPi.IP.address>:5678
-To do
+## Got to the n8n webpage
+1. Point your browser to http://n8n-pi:5678. If you are lucky and DNS is set up properly on your network, the webpage should pop right up.
+1. In the event that you are not lucky and the web page fails, determine the IP address of your Raspberry Pi and go to http://<IPAddress>:5678 where <IPAddress> is the IP address of your Raspberry Pi
 
 # DIY Install
 The DIY installation allows you to get your hands dirty by using the same installation scripts that I do for building the n8n-pi system. This way, if you want to customize or tweak your installation, then it's easy to do. Simply edit the files from the repository and go from there.
