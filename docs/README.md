@@ -21,6 +21,7 @@ n8n-pi would not be possible if it were not for some amazing people and open sou
 * [n8n Project](https://n8n.io/)
     * [GitHub](https://github.com/n8n-io/n8n)
     * [Community](https://community.n8n.io/)
+    * [Documentation](https://docs.n8n.io)
 * [Raspberry Pi](https://www.raspberrypi.org/)
     * [Documentation](https://www.raspberrypi.org/documentation/)
     * [Raspian](https://www.raspberrypi.org/downloads/raspbian/)
