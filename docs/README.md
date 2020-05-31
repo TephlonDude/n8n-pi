@@ -1,7 +1,7 @@
 <img align="right" width="300" height="300" src="https://robohash.org/n8n-pi">
 
 # n8n-pi
-![GitHub issues](https://img.shields.io/github/issues-raw/TephlonDude/n8n-pi) ![GitHub repo size](https://img.shields.io/github/repo-size/TephlonDude/n8n-pi) ![GitHub](https://img.shields.io/github/license/TephlonDude/n8n-pi) ![GitHub last commit](https://img.shields.io/github/last-commit/TephlonDude/n8n-pi) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/TephlonDude/n8n-pi)
+![GitHub issues](https://img.shields.io/github/issues-raw/TephlonDude/n8n-pi) ![GitHub repo size](https://img.shields.io/github/repo-size/TephlonDude/n8n-pi) ![GitHub](https://img.shields.io/github/license/TephlonDude/n8n-pi) ![GitHub last commit](https://img.shields.io/github/last-commit/TephlonDude/n8n-pi)
 
 # What is n8n-pi?
 n8n-pi is a port of the amazing [n8n](https://n8n.io) automation system to the Raspberry Pi environment.
@@ -24,7 +24,7 @@ n8n-pi would not be possible if it were not for some amazing people and open sou
     * [Documentation](https://docs.n8n.io)
 * [Raspberry Pi](https://www.raspberrypi.org/)
     * [Documentation](https://www.raspberrypi.org/documentation/)
-    * [Raspian](https://www.raspberrypi.org/downloads/raspbian/)
+    * [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspbian/)
 * [GitHub](https://github.com/)
 * [Docsify](https://docsify.js.org/)
 

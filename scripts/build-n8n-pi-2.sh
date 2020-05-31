@@ -33,7 +33,7 @@ fi
 
 clear
 
-message='This script is designed to build a new n8n-pi from a base Raspbian Lite installation.\n\nThis is the second of two scripts that need to be run.\n\nIt will perform the following actions:\n    1. Clean up from previous script\n    2. Delete the pi user\n    3. Install NodeJS\n    4. Install n8n\n    5. Install & Configure PM2\n    6. Update MOTD\n    7. /etc/sudoers Cleanup\n    8. Reboot'
+message='This script is designed to build a new n8n-pi from a base Raspberry Pi OS Lite installation.\n\nThis is the second of two scripts that need to be run.\n\nIt will perform the following actions:\n    1. Clean up from previous script\n    2. Delete the pi user\n    3. Install NodeJS\n    4. Install n8n\n    5. Install & Configure PM2\n    6. Update MOTD\n    7. /etc/sudoers Cleanup\n    8. Reboot'
 whiptail --backtitle "n8n-pi Installer" --title "n8n-pi Installer Part 2" --msgbox "$message"  18 78
 
 if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --yesno "Do you wish to continue with the installation?" 8 78); then
@@ -106,7 +106,7 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
 
     # Install Complete
     IPADDR=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
-    message="The final phase of the installation has finished. You should be able to access the n8n WebUI from https://${IPADDR}:5678."
+    message="The final phase of the installation has finished. You should be able to access the n8n WebUI from http://${IPADDR}:5678 or http://n8n-pi:5678"
     whiptail --backtitle "n8n-pi Installer" --title "Install Complete" --msgbox "$message"  17 78
     clear
  

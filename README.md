@@ -25,7 +25,7 @@ This project would not be possible if it was not for the help of the following:
     * [Community](https://community.n8n.io/)
 * [Raspberry Pi](https://www.raspberrypi.org/)
     * [Documentation](https://www.raspberrypi.org/documentation/)
-    * [Raspian](https://www.raspberrypi.org/downloads/raspbian/)
+    * [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspbian/)
 * [GitHub](https://github.com/)
 * [Docsify](https://docsify.js.org/)
 
