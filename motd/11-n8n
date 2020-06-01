@@ -9,7 +9,7 @@ NC="\033[00m"
 # Info
 NPMVER=$(npm -v)
 NODEJSVER=$(node -v)
-N8NVER=$(/home/n8n/.nodejs_global/lib/node_modules/n8n/package.json)
+N8NVER=$(jq -r .version /home/n8n/.nodejs_global/lib/node_modules/n8n/package.json)
 
 echo
 echo "${red}===${WHITE}NodeJS Info${red}==="
