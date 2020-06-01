@@ -17,7 +17,7 @@ echo -n "${CYAN}NPM Version....: ${white}${NPMVER}  "
 echo "${CYAN}NodeJS Version......: ${white}${NODEJSVER}"
 echo
 echo "${red}===${WHITE}n8n Info${red}==="
-echo -n "${CYAN}n8n Version........: ${white}${N8NVER)"
+echo -n "${CYAN}n8n Version........: ${white}${N8NVER}"
 echo "${CYAN}Website........: ${white}https://n8n.io"
 echo "${CYAN}Documentation..: ${white}https://docs.n8n.io"
 echo "${CYAN}Forum..........: ${white}https://community.n8n.io"
