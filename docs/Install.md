@@ -47,8 +47,8 @@ Essentially:
 The DIY installation allows you to get your hands dirty by using the same installation scripts that I do for building the n8n-pi system. This way, if you want to customize or tweak your installation, then it's easy to do. Simply edit the files from the repository and go from there.
 
 ## Quick Instructions
-If you are familiar with the Raspberry Pi hardware and Raspbian/Debian, these may be all the instructions that you need:
-1. Build Raspbian Lite microSD card with SSH enabled
+If you are familiar with the Raspberry Pi hardware and Raspberry Pi OS/Debian, these may be all the instructions that you need:
+1. Build Raspberry Pi OS Lite microSD card with SSH enabled
 1. Boot RPI from microSD card
 1. SSH to RPi
 1. Run `wget --no-cache -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash`
@@ -58,8 +58,8 @@ If you are familiar with the Raspberry Pi hardware and Raspbian/Debian, these ma
 For those of you who need a bit more detail, here are the instructions for you. They are based specifically on installation from a Windows 10 system.
 
 >**P.S.** If anyone wants to contribute detailed instructions on how to do this from a different OS (i.e. Mac or Linux, I'd be happy to put it on here and give you the credit!)
-### Build Raspbian Lite microSD card
-1. Download a copy of the [Raspian Lite image](https://www.raspberrypi.org/downloads/raspbian/). All testing and builds for this project have been done with the Raspbian Buster Lite image released on 2020-02-13.
+### Build Raspberry Pi OS Lite microSD card
+1. Download a copy of the [Raspberry Pi OS Lite image](https://www.raspberrypi.org/downloads/raspbian/). All testing and builds for this project have been done with the Raspberry Pi OS Buster Lite image released on 2020-02-13.
 1. Write the recently downloaded image to a microSD card.
 1. When the image has been completely written to the microSD card, remove it from your system
 #### References
@@ -87,7 +87,7 @@ For those of you who need a bit more detail, here are the instructions for you. 
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
     ```
 2. Open up your SSH client and connect to the Raspberry Pi using the IP address you discovered
-1. Log into the session with the default username and password for the Raspbian OS:
+1. Log into the session with the default username and password for the Raspberry Pi OS:
     * **Username:** *pi*
     * **Password:** *raspberry*
 #### Resources
