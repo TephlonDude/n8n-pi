@@ -629,3 +629,17 @@ The AIB server is running Ubuntu 18.04.4 with the following packages installed t
 * zerofree/bionic,now 1.0.4-1 amd64
 * zlib1g/bionic,now 1:1.2.11.dfsg-0ubuntu2 amd64
 </details>
+
+Install required software:
+``` bash
+sudo apt-get install unzip kpartx dnsmasq nfs-kernel-server
+```
+Create directory for network boot client image: 
+``` bash
+ mkdir -p /nfs/image
+ ```
+
+ Download the latest version of Raspberry Pi OS Lite:
+ ``` bash
+wget http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2020-05-28/2020-05-27-raspios-buster-lite-armhf.zip
+ ```
