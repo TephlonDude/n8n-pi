@@ -1,4 +1,22 @@
 # Automated Image Builder (AIB) Notes
+## June 10, 2020
+Extract the downloaded image:
+``` bash
+unzip 2020-05-27-raspios-buster-lite-armhf.zip
+```
+Mount the Raspberry Pi OS image:
+``` bash
+sudo kpartx -a -v 2020-05-27-raspios-buster-lite-armhf.img
+mkdir rootmnt
+mkdir bootmnt
+sudo mount /dev/mapper/loop2p2 rootmnt/
+sudo mount /dev/mapper/loop2p1 bootmnt/
+```
+Copy the Raspberry Pi image to the network boot client image directory:
+``` bash
+sudo cp -a rootmnt/* /nfs/image/
+sudo cp -a bootmnt/* /nfs/image/boot/
+```
 ## June 9, 2020
 Started the documentation for AIB. There is [a lot to do](https://github.com/TephlonDude/n8n-pi/projects/1#card-39811801).
 
@@ -636,7 +654,7 @@ sudo apt-get install unzip kpartx dnsmasq nfs-kernel-server
 ```
 Create directory for network boot client image: 
 ``` bash
- mkdir -p /nfs/image
+ sudo mkdir -p /nfs/image
  ```
 
  Download the latest version of Raspberry Pi OS Lite:
