@@ -8,7 +8,7 @@
 * **OS Version:** [Raspberry Pi OS (32-bit) Lite](https://www.raspberrypi.org/downloads/raspbian/)
 * **MD5 Hash:** 0fa127ef2086e3871a22639afcaf13f4
 
-# Older Downloads
+# Older Versions
 ## n8n-pi-v0.01.02
 Upgrade to include the new Raspberry Pi OS which replaces Raspbian
 * **Download:** [n8n-pi-v0.01.02](http://stuff.tephlon.xyz/n8n-pi-v0.01.02.zip)
