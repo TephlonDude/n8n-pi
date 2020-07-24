@@ -24,4 +24,3 @@ Upgrade to include the new Raspberry Pi OS which replaces Raspbian
 * **Build Date:** May 23, 2020
 * **n8n Version:** [0.67.3](https://github.com/n8n-io/n8n/releases/tag/n8n%400.67.3)
 * **MD5:** 6c7aafbb970aee20d45a40833bb44ec9
-
