@@ -22,6 +22,8 @@ At this point in the project, I still have a lot of things that I want to comple
 * Design a process for creating all variations of n8n-pi for each version of NodeJS
 * Test all the automated processes
 
+I would also like to make it easier to write images to SD cards. I think this can be accomplished with little difficulty on the AIB server.
+
 ## June 11, 2020
 It's looking like the process that I have been following gets us to copy the files over to a different folder for booting. I will probably continue down this path just for the booting piece (as I still need to figure that out) but I still want it to work directly with the .img file. [How to Modify a Raw Disk Image of Your Custom Linux Distro](https://www.linux.com/news/how-modify-raw-disk-image-your-custom-linux-distro/) looks like it may lead me in the right direction.
 
