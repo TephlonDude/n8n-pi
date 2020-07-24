@@ -1,4 +1,27 @@
 # Automated Image Builder (AIB) Notes
+## July 23, 2020
+Looks like I'm making some signigicant progress. While I've (temporarily) given up on mounting a disk image and booting the RPi from it via the network, I have been able to move my process forward for creating the images.
+
+I am still using my build scripts in manual mode to create the initial build. I then shut down the RPi and physically move the micro SD card over to the AIB server. On the AIB server, I have commands for the following:
+1. Create an image from the micro SD card
+1. Shrink the new image using [PiShrink](https://github.com/Drewsif/PiShrink)
+1. Compress the shrunk image with 7zip
+1. Upload the image to my web server
+1. Generate the MD5 checksum for the new image
+1. Update my local copy of the GitHub repository
+1. Manually update the contents of the downloads webpage
+1. Add the changed page to the current snapshot
+1. Commit the current snapshot
+1. Push the commit to the remote repository
+
+### Still To Do
+At this point in the project, I still have a lot of things that I want to complete:
+* Figure out how to automate the modification of the downloads website page
+* Remove all prompts from the image build scripts
+* Figure out how to pass information between the build scripts and the image transfer/compression script (Maybe a file or combination of files on GitHub/web server?)
+* Design a process for creating all variations of n8n-pi for each version of NodeJS
+* Test all the automated processes
+
 ## June 11, 2020
 It's looking like the process that I have been following gets us to copy the files over to a different folder for booting. I will probably continue down this path just for the booting piece (as I still need to figure that out) but I still want it to work directly with the .img file. [How to Modify a Raw Disk Image of Your Custom Linux Distro](https://www.linux.com/news/how-modify-raw-disk-image-your-custom-linux-distro/) looks like it may lead me in the right direction.
 
