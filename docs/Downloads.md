@@ -1,8 +1,8 @@
 # Current Download
 ## n8n-pi-v0.01.03
 * **Download:** [n8n-pi-v0.01.03](http://stuff.tephlon.xyz/n8n-pi-v0.01.03.zip)
-* **Release Date:** May 31, 2020
-* **Build Date:** June 1, 2020
+* **Release Date:** July 23, 2020
+* **Build Date:** July 21, 2020
 * **n8n Version:** [0.74.0](https://github.com/n8n-io/n8n/releases/tag/n8n%400.74.0)
 * **NodeJS Version:** [12.18.2](https://nodejs.org/en/blog/release/v12.18.2/)
 * **OS Version:** [Raspberry Pi OS (32-bit) Lite](https://www.raspberrypi.org/downloads/raspbian/)
