@@ -1,4 +1,14 @@
 # Current Download
+## n8n-pi-v0.01.04
+* **Download:** [n8n-pi-v0.01.04](http://stuff.tephlon.xyz/n8n-pi-v0.01.04.zip)
+* **Release Date:** July 26, 2020
+* **Build Date:** July 24, 2020
+* **n8n Version:** [0.74.0](https://github.com/n8n-io/n8n/releases/tag/n8n%400.74.0)
+* **NodeJS Version:** [12.18.2](https://nodejs.org/en/blog/release/v12.18.2/)
+* **OS Version:** [Raspberry Pi OS (32-bit) Lite](https://www.raspberrypi.org/downloads/raspbian/)
+* **MD5 Hash:** 4c32a531a41c95a207406b75362d56ec  n8n-pi-v0.01.04-shrunk.img
+
+# Older Versions
 ## n8n-pi-v0.01.03
 * **Download:** [n8n-pi-v0.01.03](http://stuff.tephlon.xyz/n8n-pi-v0.01.03.zip)
 * **Release Date:** July 23, 2020
@@ -8,7 +18,6 @@
 * **OS Version:** [Raspberry Pi OS (32-bit) Lite](https://www.raspberrypi.org/downloads/raspbian/)
 * **MD5 Hash:** 0fa127ef2086e3871a22639afcaf13f4
 
-# Older Versions
 ## n8n-pi-v0.01.02
 Upgrade to include the new Raspberry Pi OS which replaces Raspbian
 * **Download:** [n8n-pi-v0.01.02](http://stuff.tephlon.xyz/n8n-pi-v0.01.02.zip)
