@@ -14,11 +14,18 @@ While I was working on how to build the images, I was also trying to determine w
 
 Each of these two components have an RSS feed that announces when a new version comes out ([n8n releases RSS feed](https://github.com/n8n-io/n8n/releases.atom) and [NodeJS releases RSS feed](https://nodejs.org/en/feed/releases.xml)). The idea is to figure out how to monitor these two feeds and then when a new version of either component comes out, this triggers the build process.
 
+The overall process will look something like this:
+![AIB Build Process](img/BuildProcess.png)
+
 I also think that I'm going to rename the versions of n8n-pi to better reflect the components in them. So, the new naming structure will be:
 
 > n8n-pi-v{n8n version}-{NodeJS base version}
 
 So, for example, the current version of n8n-pi as of the righting of this document is _n8n-pi-v0.01.03_. Who knows what version of n8n and NodeJS it is running on. But, based on the new naming convention, it will be called _n8n-pi-v0.74.0-12_. This immediately tells me that this is based on n8n version 0.74.0 and it runs with NodeJS 12. This just makes way more sense.
+
+I am also finding that it takes some time for the initial update to occur when running a clean version of Raspberry Pi OS. Because of this issue, I am going to implement the following:
+1. Building an [apt-cacher-ng](https://wiki.debian.org/AptCacherNg) server following the instructions [here](https://geektechstuff.com/2020/01/20/using-a-raspberry-pi-as-an-apt-cache-raspberry-pi/)
+1. Occasionally build a refreshed version of Raspbery Pi OS with everything up to date and then use that as the base for the builds
 
 ## July 23, 2020
 Looks like I'm making some signigicant progress. While I've (temporarily) given up on mounting a disk image and booting the RPi from it via the network, I have been able to move my process forward for creating the images.
