@@ -23,7 +23,7 @@ While it would be impossible to completely recreate the <a href="https://www.you
 In this article, we are going to show you how to build your very own virtual Donna using many of the services that you already use today and connecting them all together with <a href="https://n8n.io" target="_blank">N8N</a>.
 
 ## Goals
-- Harvey Quote
+![Harvey Goals](../img/HarveyGoals.jpg)
 ### Tools
 
 
