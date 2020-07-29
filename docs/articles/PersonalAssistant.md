@@ -23,8 +23,43 @@ While it would be impossible to completely recreate the <a href="https://www.you
 In this article, we are going to show you how to build your very own virtual Donna using many of the services that you already use today and connecting them all together with <a href="https://n8n.io" target="_blank">N8N</a>.
 
 ## Goals
-![Harvey Goals](../img/HarveyGoals.jpg)
-### Tools
+![Harvey Goals](../img/HarveyGoals.jpeg)
+There is very little chance that you are going to arrive where you want to if you don't set a goal. And this project is no exception. So we are going to set some specific short term goals which we will complete during this article and then some long term goals which are ideas I think we can add-on at a later date once we build this initial framework.
+
+### Short Term Goals
+* Set up a to communicate with Virtual Donna
+* Give Virtual Donna access to manage:
+  * Mail
+  * Calendar
+  * Tasks
+  * Video Conferencing
+* Give Virtual Donna some sass!
+
+### Long Term Goals
+In the long term, we'd love to get Virtual Donna to:
+  * Make purchases online
+  * Speak and be spoken to
+  * Make dinner reservations
+  * Order coffe or supper
+  * Make phone calls
+  * Provide reminders based on time to travel to meeting
+  * Manage smart devices
+  * Send a dictated email
+  * Monitor daily step count
+  * Manage text messages
+  * Recommend a new recipe
+  * Order groceries
+  * Manage kitchen
+  * Sell stuff online (and handle negotiations)
+  * Recommend a movie
+  * Manage to do lists
+  * Assign work to employees
+  * Send out invoices for completed work
+  * Update the company website
+  * Monitor competition's Twitter accounts and respond accordingly
+  * Write and send out the company newsletter
+
+## Tools and Services
 
 
 ## Assumptions
