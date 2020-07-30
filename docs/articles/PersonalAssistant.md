@@ -1,4 +1,4 @@
-# N8N-Donna: Building Your Perfect Personal Assistant
+# Virtual Donna: Building Your Perfect Personal Assistant
 <div align="center">
 
 ![Donna](../img/Donna.jpg)
@@ -20,10 +20,17 @@ Well, I may have some good newd for you!
 
 While it would be impossible to completely recreate the <a href="https://www.youtube.com/watch?v=3TMNcCquWhg" target="_blank">awesome that is Donna</a>, we can definitely but together a useful virtual assistant who can deal with some of the day to day details that somehow find a way to consume your life!
 
-In this article, we are going to show you how to build your very own virtual Donna using many of the services that you already use today and connecting them all together with <a href="https://n8n.io" target="_blank">N8N</a>.
+In this article, we are going to show you how to build your very own virtual Donna using many of the services that you already use today and connecting them all together with <a href="https://n8n.io" target="_blank">n8n</a>.
+
+
+<div style="float: right;margin-right: 7px;margin-top: 7px;">
+
+![Harvey Goals](../img/HarveyGoals.jpeg)
+
+</div>
 
 ## Goals
-![Harvey Goals](../img/HarveyGoals.jpeg)
+
 There is very little chance that you are going to arrive where you want to if you don't set a goal. And this project is no exception. So we are going to set some specific short term goals which we will complete during this article and then some long term goals which are ideas I think we can add-on at a later date once we build this initial framework.
 
 ### Short Term Goals
@@ -58,9 +65,23 @@ In the long term, we'd love to get Virtual Donna to:
   * Update the company website
   * Monitor competition's Twitter accounts and respond accordingly
   * Write and send out the company newsletter
+  * Whatever else comes to mind!
 
 ## Tools and Services
 
+### n8n
+The core of our Virtual Donna is the <a href="https://n8n.io" target="_blank">n8n</a> system. It has two primary purposes:
+1. Connect services together that do not presently talk together
+2. Provide the logic for how these services interact
+
+### Other Services
+We are also going to be using a number of other services, all of which are available online at no cost. These include:
+* GMail
+* Google Calendar
+* Google Tasks
+* Telegram
+* Discord
+* Slack
 
 ## Assumptions
 
