@@ -71,7 +71,7 @@ For those of you who need a bit more detail, here are the instructions for you. 
 1. Re-insert the microSD card back into your computer system
 1. Find the drive/mount point where the first partition on the microSD card is located. You will know you have the right location because it will have a file called `kernel.img` on it
 1. In this same location, create an empty file called `SSH`. It should have no extension and no content
->**Windows Users**: This is often where Windows users end up with an issue because the file extensions are hidden on their system and it appears that the file has not extension when it actually does. If you are having difficulty with this, please check out this [article](https://www.bleepingcomputer.com/tutorials/how-to-show-file-extensions-in-windows/)
+>**Windows Users**: This is often where Windows users end up with an issue because the file extensions are hidden on their system and it appears that the file does not have an extension when it actually does. If you are having difficulty with this, please check out this [article](https://www.bleepingcomputer.com/tutorials/how-to-show-file-extensions-in-windows/)
 4. Remove the microSD card from your computer
 
 ### Boot Raspberry Pi from microSD card
