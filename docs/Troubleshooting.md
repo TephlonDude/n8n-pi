@@ -15,7 +15,14 @@ Write the image file to the microSD card using a program such as [Raspberry Pi I
 * [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
 
 ## Can't SSH to RPi in order to Start Installation
-
+### **Challenge**
+When you attemtp to SSH to the newly imaged Raspberry Pi, you are refused access.
+### **Potential Problem**
+This is often caused by the SSH file not being added to the Raspberry Pi SD card before it is put into the Raspberry Pi.
+### **Resolution**
+Crate an SSH file in the root of the boot partition on the SD card while it is in a different computer and then replace the card back into the Raspberry Pi and reboot. This should resove the issue
+### **Resources**
+* [Enable SSH](http://n8n-pi.tephlon.xyz/#/Install?id=enable-ssh)
 # Permissions
 
 # Security
