@@ -1,11 +1,12 @@
 # Installing n8n-pi
-There are two ways to install n8n-pi; the easy way and the DIY way. We will cover both of these.
+There are two ways to install n8n-pi; the [easy way](/Install?id=easy-install) and the [DIY way](/Install?id=diy-install). We will cover both of these.
 
 ## Assumptions
 For this installation, we are making the following assumptions. If this does not fit your situation, you may need to do...something. Learn a new skill... Buy (borrow) some inexpensive hardware...stuff like that!
-* You have a Raspberry Pi 3 (This is what we did our testing on)
+* You have a Raspberry Pi with a Ethernet port (This is what we did our testing on)
 * You have a microSD card
 * You are comfortable with working in a Linux environment from the command line
+> ***Linux User***: You should be by now
 * You have internet access
 * You are familiar with SSH and connecting to remote systems with SSH
 * You have an open network port on your network switch and a patch cable that can plug into the RPi
@@ -14,7 +15,9 @@ For this installation, we are making the following assumptions. If this does not
 * You have the ability to put a microSD card into your computer and see it from your operating system
 * You have the following tools installed on your computer:
   * SSH client (e.g. [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/))
-  * Disk imaging software (e.g. [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/))
+  * Disk imaging software (e.g. [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) or [Etcher](https://www.balena.io/etcher/))
+
+> ***Windows User***: No need for a SSH client if you have build 1803 (aka. Spring Creators Update (2018)) or later. A SSH client is enabled by default and is accessible via CMD. 
 
 # Easy Install
 This option will get you up and running the quickest. You should be ready to start building your first flows in a few miutes.
@@ -23,7 +26,7 @@ Essentially:
 1. Download the image
 1. Write the image to a microSD card
 1. Boot the RPi
-1. Point your browser to http://<RPi.IP.address>:5678
+1. Point your browser to http://(Insert Pi IP Address):5678
 
 ## Download and Prep the Image
 1. Download the zipped image [here](https://1drv.ms/u/s!AiPmfoHg_rLRjMJYC4StlCAiiVfqQw?e=rbYone). Please note that this may take some time as the file is about 650 MB.
@@ -31,7 +34,7 @@ Essentially:
 
 ## Write the Image to microSD card
 1. Insert a microSD card into your system. Minimum card size is 4 GB.
-1. Using your imaging software of choice (e.g. [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)), write the image to the microSD card.
+1. Using your imaging software of choice (e.g. [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) or [Etcher](https://www.balena.io/etcher/)), write the image to the microSD card.
 1. Once it is done writing, remove the microSD card from your system.
 
 ## Boot the RPi
@@ -40,8 +43,10 @@ Essentially:
 1. Power up your Raspberry Pi
 
 ## Got to the n8n webpage
-1. Point your browser to http://n8n-pi:5678. If you are lucky and DNS is set up properly on your network, the webpage should pop right up.
-1. In the event that you are not lucky and the web page fails, determine the IP address of your Raspberry Pi and go to http://<IPAddress>:5678 where <IPAddress> is the IP address of your Raspberry Pi
+1. Point your browser to http://n8n-pi:5678 or https://n8n-pi.local. If you are lucky and DNS is set up properly on your network, the webpage should pop right up.
+1. In the event that you are not lucky and the web page fails, determine the IP address of your Raspberry Pi and go to http://(Insert Pi IP Address):5678 where (Insert Pi IP Address) is the IP address of your Raspberry Pi
+
+>If on the same network as the Pi, you can use the local ip address (usually 10.0.0.XXX)
 
 # DIY Install
 The DIY installation allows you to get your hands dirty by using the same installation scripts that I do for building the n8n-pi system. This way, if you want to customize or tweak your installation, then it's easy to do. Simply edit the files from the repository and go from there.
@@ -55,17 +60,15 @@ If you are familiar with the Raspberry Pi hardware and Raspberry Pi OS/Debian, t
 1. Follow the prompts
 
 ## Detailed Instructions
-For those of you who need a bit more detail, here are the instructions for you. They are based specifically on installation from a Windows 10 system.
+For those of you who need a bit more detail, here are the instructions for you. They are based specifically on installation from a Windows 10 system, but should work on any.
 
 >**P.S.** If anyone wants to contribute detailed instructions on how to do this from a different OS (i.e. Mac or Linux, I'd be happy to put it on here and give you the credit!)
 ### Build Raspberry Pi OS Lite microSD card
 1. Download a copy of the [Raspberry Pi OS Lite image](https://www.raspberrypi.org/downloads/raspbian/). All testing and builds for this project have been done with the Raspberry Pi OS Buster Lite image released on 2020-02-13.
-1. Write the recently downloaded image to a microSD card.
+1. Write the recently downloaded image to a microSD card. See [SD Card Requirements](https://www.raspberrypi.org/documentation/installation/sd-cards.md) and the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/).
 1. When the image has been completely written to the microSD card, remove it from your system
-#### References
-* [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
-* [SD Card Requirements](https://www.raspberrypi.org/documentation/installation/sd-cards.md)
-* [Installing Images](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+
+>For help installing the image see [this](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
 
 ### Enable SSH
 1. Re-insert the microSD card back into your computer system
@@ -90,8 +93,8 @@ For those of you who need a bit more detail, here are the instructions for you. 
 1. Log into the session with the default username and password for the Raspberry Pi OS:
     * **Username:** *pi*
     * **Password:** *raspberry*
-#### Resources
-* [How to Scan for Any Device IP Address on a Network With Tools](https://www.dnsstuff.com/scan-network-for-device-ip-address)
+
+> For help with finding the IP adress see [this](https://www.dnsstuff.com/scan-network-for-device-ip-address).
 
 ### Perform the Installation
 1. From the command prompt, enter the following to download and run the installation script:
