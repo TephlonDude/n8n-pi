@@ -1,5 +1,8 @@
 <img align="right" width="300" height="300" src="https://robohash.org/n8n-pi">
 
+# Warning!!!
+Running this script will completely rewrite your Raspberry Pi disk! Only use it on a fresh install!
+
 # n8n-pi
 ![GitHub issues](https://img.shields.io/github/issues-raw/TephlonDude/n8n-pi) ![GitHub repo size](https://img.shields.io/github/repo-size/TephlonDude/n8n-pi) ![GitHub](https://img.shields.io/github/license/TephlonDude/n8n-pi) ![GitHub last commit](https://img.shields.io/github/last-commit/TephlonDude/n8n-pi)
 
