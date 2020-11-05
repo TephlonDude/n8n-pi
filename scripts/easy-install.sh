@@ -1,5 +1,5 @@
 #!/bin/bash
-logfile=/var/log/n8n-pi.log
+logfile=/var/log/n8n.log
 
 # Deals with errors
 error_exit()
