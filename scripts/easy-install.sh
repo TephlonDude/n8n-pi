@@ -1,12 +1,12 @@
 #!/bin/bash
-logfile=/var/log/n8n.log
+logfile=~/n8n-install.log
 
 # Deals with errors
 error_exit()
 {
 	echo "${1:-"Unknown Error"}" 1>&2
     echo "Last 10 entried by this script:"
-    $SUDO tail $logfile
+    tail $logfile
     echo "Full log details are recorded in $logfile"
 	exit 1
 }
@@ -17,10 +17,10 @@ log_heading()
     length=${#1}
     length=`expr $length + 8`
     printf '%*s' $length | tr ' ' '*'>>$logfile
-    $SUDO echo>>$logfile
+    echo>>$logfile
     echo "*** $1 ***">>$logfile
     printf '%*s' $length | tr ' ' '*'>>$logfile
-    $SUDO echo>>$logfile
+    echo>>$logfile
     echo -n $1...
 
 }
