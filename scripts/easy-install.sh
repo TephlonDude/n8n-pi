@@ -21,7 +21,7 @@ log_heading()
     echo "*** $1 ***">>$logfile
     printf '%*s' $length | tr ' ' '*'>>$logfile
     echo>>$logfile
-    echo -n $1...
+    echo $1...
 
 }
 
@@ -45,7 +45,7 @@ if (whiptail --backtitle "n8n Easy Installer" --title "Continue with install?" -
 
     # 2. Add NodeJS 12 Source List
     log_heading "Add NodeJS 12 Source List"
-    curl -sL https://deb.nodesource.com/setup_${NODEVER} | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
 
     # 3. Install Node JS
     log_heading "Installing dependencies"
