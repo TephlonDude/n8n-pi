@@ -33,7 +33,7 @@ fi
 
 clear
 
-message='This script is designed to install a fresh n8n installation along with all the little nit picky things that sometimes are a challenge. It is designed for Debian based linux installs. This scritp will:\n    1. Install build dependencies\n    2. Add NodeJS 12 Soource List\n    3. Install NodeJS 12\n    4. Install n8n\n    5. Install & Configure PM2\n'
+message='This script is designed to install a fresh n8n installation along with all the little nit picky things that sometimes are a challenge. It is designed for Debian based linux installs. This script will:\n    1. Install build dependencies\n    2. Add NodeJS 12 Soource List\n    3. Install NodeJS 12\n    4. Install n8n\n    5. Install & Configure PM2\n'
 whiptail --backtitle "n8n Easy Installer" --title "n8n-pi Easy Installer" --msgbox "$message"  18 78
 
 if (whiptail --backtitle "n8n Easy Installer" --title "Continue with install?" --yesno "Do you wish to continue with the installation?" 8 78); then
