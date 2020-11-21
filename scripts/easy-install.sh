@@ -6,7 +6,7 @@ error_exit()
 {
 	echo "${1:-"Unknown Error"}" 1>&2
     echo "Last 10 entried by this script:"
-    tail $logfile
+    $SUDO tail $logfile
     echo "Full log details are recorded in $logfile"
 	exit 1
 }
@@ -17,10 +17,10 @@ log_heading()
     length=${#1}
     length=`expr $length + 8`
     printf '%*s' $length | tr ' ' '*'>>$logfile
-    echo>>$logfile
+    $SUDO echo>>$logfile
     echo "*** $1 ***">>$logfile
     printf '%*s' $length | tr ' ' '*'>>$logfile
-    echo>>$logfile
+    $SUDO echo>>$logfile
     echo -n $1...
 
 }
