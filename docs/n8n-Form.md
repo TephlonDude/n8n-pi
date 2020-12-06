@@ -10,7 +10,7 @@ A quick proof of concept showing how to submit form information to n8n.
 ## Build the webform
 1. Copy the following to workflow into the n8n editor UI:
 ```  XML
-  {
+{
   "name": "Form Test",
   "nodes": [
     {
@@ -19,13 +19,15 @@ A quick proof of concept showing how to submit form information to n8n.
       "type": "n8n-nodes-base.start",
       "typeVersion": 1,
       "position": [
-        250,
-        300
+        -20,
+        -120
       ]
     },
     {
       "parameters": {
         "path": "form",
+        "responseMode": "lastNode",
+        "responseData": "firstEntryBinary",
         "options": {}
       },
       "name": "Webhook",
@@ -36,9 +38,76 @@ A quick proof of concept showing how to submit form information to n8n.
         450
       ],
       "webhookId": "1aa2c0b2-06e2-4bd6-9e20-404252783d7b"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "html",
+              "value": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Tephlon n8n POC</title><meta name=\"description\" content=\"n8n POC\"><meta name=\"author\" content=\"Tephlon\"></head><body><H1>Working!</H1>This is a very clear indicator that the experiment worked!</body></html>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        660,
+        450
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "convertAllData": false,
+        "sourceKey": "html",
+        "options": {
+          "mimeType": "text/html",
+          "useRawData": true
+        }
+      },
+      "name": "Move Binary Data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        850,
+        450
+      ]
     }
   ],
-  "connections": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move Binary Data": {
+      "main": [
+        []
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "active": false,
   "settings": {},
   "id": "6"
