@@ -74,16 +74,16 @@ A quick proof of concept showing how to submit form information to n8n.
             <input type="submit" value="Submit">
         </form>
     </body>
-  </html>
-  ```
-  3. Replace `https://tephlon.app.n8n.cloud/webhook-test/form` with the webhook URL noted earlier.
+</html>
+```
+3. Replace `https://tephlon.app.n8n.cloud/webhook-test/form` with the webhook URL noted earlier.
 
-  ## Testing Form and Webhook
-  1. In the n8n editor UI editor, open the Webhook node
-  2. Click the *Execute Node* button
-  3. In your web browser, browse to the web form you created
-  4. Change inputs as desired
-  5. Press the *Submit* button
-  6. You should see your submitted results in the Webhook node
+## Testing Form and Webhook
+1. In the n8n editor UI editor, open the Webhook node
+2. Click the *Execute Node* button
+3. In your web browser, browse to the web form you created
+4. Change inputs as desired
+5. Press the *Submit* button
+6. You should see your submitted results in the Webhook node
 
-  ![Form to n8n](img/form_to_n8n.png)
+![Form to n8n](img/form_to_n8n.png)
