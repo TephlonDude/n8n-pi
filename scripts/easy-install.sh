@@ -43,12 +43,12 @@ if (whiptail --backtitle "n8n Easy Installer" --title "Continue with install?" -
     $SUDO apt update &>>$logfile || error_exit "$LINENO: Unable to update apt"
     $SUDO apt install build-essential python -y &>>$logfile || error_exit "$LINENO: Unable to install dependencies"
 
-    # 2. Add NodeJS 12 Source List
-    log_heading "Add NodeJS 12 Source List"
-    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
+    # 2. Add NodeJS 14.x Source List
+    log_heading "Add NodeJS 14.x Source List"
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
 
     # 3. Install Node JS
-    log_heading "Installing NodeJS 12"
+    log_heading "Installing NodeJS 14.x"
     $SUDO apt install -y nodejs &>>$logfile || error_exit "$LINENO: Unable to install NodeJS"
 
     # 4. Install n8n
