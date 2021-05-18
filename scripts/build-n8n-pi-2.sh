@@ -51,16 +51,9 @@ if (whiptail --backtitle "n8n-pi Installer" --title "Continue with install?" --y
     $SUDO deluser --remove-home -f pi &>>$logfile || error_exit "$LINENO: Unable to delete the pi user and/or remove the home directory"
     echo "done!"
 
-    # Install NodeJS
+    # Install NodeJS 14.x
     log_heading "Install NodeJS (Please be patient, this may take a while)"
-    NODEVER=$(whiptail --backtitle "n8n-pi Installer" --title "Select NodeJS Version" --radiolist \
-        "Select the version of NodeJS you would like to install:" 20 78 4 \
-        "10.x" "Node.js v10.x" OFF \
-        "12.x" "Node.js v12.x" ON \
-        "13.x" "Node.js v13.x" OFF \
-        "14.x" "Node.js v14.x" OFF \
-        3>&1 1>&2 2>&3)
-    curl -sL https://deb.nodesource.com/setup_${NODEVER} | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - &>>$logfile || error_exit "$LINENO: Unable to update NodeJs source list"
     $SUDO apt install -y nodejs &>>$logfile || error_exit "$LINENO: Unable to install NodeJS"
     echo "done!"
 
