@@ -3,7 +3,7 @@ sudo apt update
 sudo apt upgrade
 sudo apt install build-essential python
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install nodejs
 
 cd ~
@@ -17,5 +17,5 @@ cd ~
 npm install pm2@latest -g
 pm2 start n8n
 pm2 startup
-# make sure to run the command mentioned 
+# make sure to run the command mentioned in output
 pm2 save
