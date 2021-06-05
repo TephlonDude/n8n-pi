@@ -31,3 +31,6 @@ This project would not be possible if it was not for the help of the following:
 
 # Documentation
 All documentation for this project can be found at http://n8n-pi.tephlon.xyz.
+
+# Alternate Istallation
+If you are interested in installing and then running n8n using `systemd`, check out [this gist](https://gist.github.com/Sclafus/9823cc863ad4d007d0ccfef048fa4942) by [Sclafus](https://gist.github.com/Sclafus).
