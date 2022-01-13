@@ -1,0 +1,187 @@
+{
+  "name": "Math Router",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "number1 = items[0].json.number1;\nnumber2 = items[0].json.number2;\n\nitems[0].json = {};\nitems[0].json.result = number1 + number2;\n\nreturn items;"
+      },
+      "name": "Add",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        900,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "number1 = items[0].json.number1;\nnumber2 = items[0].json.number2;\n\nitems[0].json = {};\nitems[0].json.result = number1 - number2;\n\nreturn items;"
+      },
+      "name": "Subtract",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "number1 = items[0].json.number1;\nnumber2 = items[0].json.number2;\n\nitems[0].json = {};\nitems[0].json.result = number1 * number2;\n\nreturn items;"
+      },
+      "name": "Multiply",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        900,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "number1 = items[0].json.number1;\nnumber2 = items[0].json.number2;\n\nitems[0].json = {};\nitems[0].json.result = number1 / number2;\n\nreturn items;"
+      },
+      "name": "Divide",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "number1",
+              "value": 23
+            },
+            {
+              "name": "number2",
+              "value": 43
+            }
+          ],
+          "string": [
+            {
+              "name": "function",
+              "value": "divide"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Testing",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ],
+      "notesInFlow": true,
+      "notes": "This node is for testing only. Please disable the node before going live."
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{$json[\"function\"].toUpperCase()}}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "ADD"
+            },
+            {
+              "value2": "SUBTRACT",
+              "output": 1
+            },
+            {
+              "value2": "MULTIPLY",
+              "output": 2
+            },
+            {
+              "value2": "DIVIDE",
+              "output": 3
+            }
+          ]
+        }
+      },
+      "name": "Function Route",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Testing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Testing": {
+      "main": [
+        [
+          {
+            "node": "Function Route",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function Route": {
+      "main": [
+        [
+          {
+            "node": "Add",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Subtract",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Multiply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Divide",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "id": 1056
+}
